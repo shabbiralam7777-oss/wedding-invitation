@@ -1,0 +1,95 @@
+.card-container {
+    background-color: #fff;
+    border: 3px solid #800000; /* Deep Maroon like the photo */
+    max-width: 700px;
+    margin: 20px auto;
+    padding: 30px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.bismillah-urdu { font-size: 1.5rem; margin-bottom: 5px; }
+.bismillah-english { font-size: 0.8rem; font-weight: bold; text-decoration: underline; margin-bottom: 20px; }
+
+.hosts { font-weight: bold; font-size: 1.1rem; margin-bottom: 5px; }
+.invitation-text { font-size: 0.9rem; font-style: italic; margin-bottom: 30px; line-height: 1.4; }
+
+.names-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.person h2 {
+    font-family: 'Playfair Display', serif;
+    color: #800000;
+    font-size: 1.8rem;
+}
+
+.weds-circle {
+    border: 1px solid #d4af37;
+    border-radius: 50%;
+    padding: 10px;
+    font-family: 'Playfair Display', serif;
+    color: #d4af37;
+    font-weight: bold;
+}
+
+.schedule-table {
+    margin: 20px auto;
+    text-align: left;
+    font-size: 0.9rem;
+    border-top: 2px solid #800000;
+    border-bottom: 2px solid #800000;
+    padding: 15px 0;
+}
+
+.schedule-table td { padding: 5px 10px; }
+.travel-box {
+    margin-top: 20px;
+    font-size: 0.85rem;
+    color: #555;
+    background: #fdf2f2;
+    padding: 10px;
+    border-radius: 5px;
+}
+body {
+    /* A soft, luxurious blend of cream and very pale maroon */
+    background: linear-gradient(135deg, #fff9f0, #fcf8f2, #fdf2f2, #fff9f0);
+    background-size: 400% 400%;
+    animation: gradientBG 12s ease infinite; /* Slow, natural movement */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+.card-container {
+    background: rgba(255, 255, 255, 0.85); /* Semi-transparent white */
+    backdrop-filter: blur(10px); /* Frosted glass effect */
+    -webkit-backdrop-filter: blur(10px); 
+    border: 1px solid rgba(212, 175, 55, 0.3); /* Very thin gold border */
+    border-radius: 20px;
+    padding: 50px 30px;
+    max-width: 650px;
+    box-shadow: 0 8px 32px 0 rgba(128, 0, 0, 0.1); /* Soft maroon shadow */
+    text-align: center;
+}
+/* Adding a subtle "Weds" watermark in the background of the card */
+.card-container::before {
+    content: "囍"; /* Traditional symbol of Double Happiness or use "Weds" */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 15rem;
+    color: rgba(128, 0, 0, 0.03); /* Extremely faint maroon */
+    z-index: -1; /* Keeps it behind the text */
+    pointer-events: none;
+}
