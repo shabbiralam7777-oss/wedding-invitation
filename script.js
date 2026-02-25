@@ -31,4 +31,21 @@ const countdownFunction = setInterval(function() {
         clearInterval(countdownFunction);
         document.getElementById("timer").innerHTML = "Hooray! The Wedding Day is Here!";
     }
+
 }, 1000);
+function getGuestInfo() {
+    const params = new URLSearchParams(window.location.search);
+    
+    // Using .get() to pull the data from the URL
+    const name = params.get('name');
+    const place = params.get('place');
+
+    // If a name exists in the link, update the text
+    if (name) {
+        document.getElementById('guest-welcome').innerText = "Welcome, " + name;
+    }
+    if (place) {
+        document.getElementById('guest-location').innerText = "from " + place;
+    }
+}
+window.onload = getGuestInfo;
