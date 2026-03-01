@@ -1,70 +1,141 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Wedding Invitation</title>
+<title>Romantic Wedding Invitation</title>
+
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+
 <style>
 body{
     margin:0;
-    background:linear-gradient(to right,#fff1f5,#ffe4ec);
     font-family:'Poppins',sans-serif;
     text-align:center;
+    background:url('https://images.unsplash.com/photo-1522673607200-164d1b6ce486') no-repeat center center/cover;
+    overflow-x:hidden;
     color:#5a2a3b;
 }
+
+/* Glass Card */
 .card{
-    margin:40px auto;
+    margin:60px auto;
     padding:50px;
     width:90%;
-    max-width:800px;
-    background:white;
-    border-radius:20px;
-    box-shadow:0 15px 40px rgba(0,0,0,0.1);
+    max-width:850px;
+    background:rgba(255,255,255,0.85);
+    backdrop-filter:blur(10px);
+    border-radius:25px;
+    box-shadow:0 15px 40px rgba(0,0,0,0.2);
+    animation:fadeIn 2s ease-in-out;
 }
+
 h1{
     font-family:'Great Vibes',cursive;
-    font-size:60px;
+    font-size:65px;
     margin:10px 0;
-}
-.weds{
-    margin:20px;
-    font-size:22px;
     color:#c2185b;
 }
+
+.weds{
+    font-size:24px;
+    margin:20px;
+    color:#999;
+}
+
 .section{
     margin-top:40px;
     line-height:30px;
 }
-hr{
-    margin:30px 0;
+
+.countdown{
+    margin-top:30px;
+    font-size:22px;
+    color:#c2185b;
+}
+
+button{
+    margin-top:30px;
+    padding:10px 25px;
+    border:none;
+    background:#c2185b;
+    color:white;
+    border-radius:20px;
+    cursor:pointer;
+    font-size:16px;
+}
+
+/* Floating Hearts */
+.heart{
+    position:fixed;
+    bottom:-10px;
+    font-size:20px;
+    animation:floatUp 6s linear infinite;
+    color:pink;
+}
+
+@keyframes floatUp{
+    0%{transform:translateY(0); opacity:1;}
+    100%{transform:translateY(-800px); opacity:0;}
+}
+
+@keyframes fadeIn{
+    from{opacity:0; transform:translateY(20px);}
+    to{opacity:1; transform:translateY(0);}
 }
 </style>
 </head>
+
 <body>
+
 <div class="card">
+
 <h3>بِسْمِ ٱللَّٰهِ ٱلرَّحْمَـٰنِ ٱلرَّحِيمِ</h3>
 <p>Mr. & Mrs. Md Meraj Ahmad request the pleasure of your company</p>
 
 <h1>Fahmida Parveen</h1>
-<p>D/o Md Meraj Ahmad<br>Kurmi Tola, Ward No-9, Daudnagar</p>
+<p>D/o Md Meraj Ahmad, Daudnagar</p>
 
 <div class="weds">Weds</div>
 
 <h1>Md Rahat Ali</h1>
-<p>S/o Gulam Sharwar Ansari<br>Vill. Amjhar Sharif, Hasapura<br>Aurangabad - 824120</p>
-
-<hr>
+<p>S/o Gulam Sharwar Ansari, Aurangabad</p>
 
 <div class="section">
 <h3>Programme</h3>
-<p>Qurankhani & Milad - 9 April 2026</p>
-<p>Manjha - 9 April 2026</p>
-<p>Arrival of Barat - 12 April 2026</p>
-<p>Dinner & Nikah - 12 April 2026</p>
-<p>Rukhsati - 13 April 2026</p>
+<p>9 April 2026 - Qurankhani & Manjha</p>
+<p>12 April 2026 - Dinner & Nikah</p>
+<p>13 April 2026 - Rukhsati</p>
 </div>
 
-<hr>
-<p><b>R.S.V.P</b><br>Md. Imteyaz | Md. Sadique | Md. Samsher | Md. Shabbir</p>
 </div>
+
+<script>
+// Countdown
+var x = setInterval(function() {
+var now = new Date().getTime();
+var distance = weddingDate - now;
+var days = Math.floor(distance / (1000*60*60*24));
+document.getElementById("countdown").innerHTML =
+days + " Days Left For The Big Day ❤️";
+if(distance < 0){
+clearInterval(x);
+document.getElementById("countdown").innerHTML =
+"Wedding Day Has Arrived 💍";
+}
+},1000);
+
+
+
+// Floating hearts generator
+setInterval(function(){
+var heart = document.createElement("div");
+heart.className="heart";
+heart.innerHTML="💖";
+heart.style.left=Math.random()*100+"vw";
+heart.style.fontSize=(Math.random()*20+15)+"px";
+document.body.appendChild(heart);
+setTimeout(function(){heart.remove();},6000);
+},500);
+</script>
+
 </body>
 </html>
