@@ -11,18 +11,64 @@ body{
     margin:0;
     font-family:'Poppins',sans-serif;
     text-align:center;
-    background:url('https://images.unsplash.com/photo-1522673607200-164d1b6ce486') no-repeat center center/cover;
-    color:#5a2a3b;
+    background:linear-gradient(-45deg,#ffe4ec,#fff1f5,#ffd6e8,#ffeef4);
+    background-size:400% 400%;
+    animation:bgGlow 12s ease infinite;
+    overflow-x:hidden;
 }
 
-/* Responsive Card */
+/* Background Glow Animation */
+@keyframes bgGlow{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+}
+
+/* Envelope Screen */
+.envelope-screen{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    background:rgba(255,255,255,0.9);
+}
+
+.envelope{
+    width:200px;
+    height:130px;
+    background:#c2185b;
+    position:relative;
+    cursor:pointer;
+    border-radius:5px;
+}
+
+.envelope:before{
+    content:"";
+    position:absolute;
+    top:-65px;
+    left:0;
+    width:0;
+    height:0;
+    border-left:100px solid transparent;
+    border-right:100px solid transparent;
+    border-bottom:65px solid #ad1457;
+}
+
+.open-text{
+    margin-top:20px;
+    font-size:18px;
+    color:#c2185b;
+}
+
+/* Card Hidden Initially */
 .card{
+    display:none;
     margin:40px auto;
     padding:40px 25px;
     width:90%;
     max-width:850px;
-    background:rgba(255,255,255,0.9);
-    backdrop-filter:blur(8px);
+    background:rgba(255,255,255,0.95);
     border-radius:20px;
     box-shadow:0 10px 35px rgba(0,0,0,0.2);
     animation:fadeIn 1.5s ease-in-out;
@@ -30,36 +76,29 @@ body{
 
 h1{
     font-family:'Great Vibes',cursive;
-    font-size:clamp(35px, 8vw, 65px);
-    margin:10px 0;
+    font-size:clamp(35px,8vw,65px);
     color:#c2185b;
 }
 
 .weds{
-    font-size:clamp(18px, 4vw, 24px);
     margin:15px;
     color:#888;
+    font-size:20px;
 }
 
 .section{
-    margin-top:35px;
+    margin-top:30px;
     line-height:28px;
-    font-size:clamp(14px, 3.5vw, 18px);
 }
 
 .venue{
-    margin-top:30px;
+    margin-top:25px;
     padding:15px;
     background:#ffe4ec;
     border-radius:12px;
-    font-weight:500;
 }
 
-h3{
-    margin-top:30px;
-}
-
-/* Floating hearts */
+/* Floating Hearts */
 .heart{
     position:fixed;
     bottom:-10px;
@@ -77,19 +116,19 @@ h3{
     from{opacity:0; transform:translateY(20px);}
     to{opacity:1; transform:translateY(0);}
 }
-
-/* Mobile spacing improvement */
-@media (max-width:600px){
-    .card{
-        padding:30px 15px;
-    }
-}
 </style>
 </head>
 
 <body>
 
-<div class="card">
+<!-- Envelope First Screen -->
+<div class="envelope-screen" id="envelopeScreen">
+    <div class="envelope" onclick="openCard()"></div>
+    <div class="open-text">💌 Click Envelope To Open Invitation</div>
+</div>
+
+<!-- Main Card -->
+<div class="card" id="mainCard">
 
 <h3>بِسْمِ ٱللَّٰهِ ٱلرَّحْمَـٰنِ ٱلرَّحِيمِ</h3>
 <p>Mr. & Mrs. Md Meraj Ahmad request the pleasure of your company</p>
@@ -100,8 +139,7 @@ h3{
 <div class="weds">Weds</div>
 
 <h1>Md Rahat Ali</h1>
-<p>S/o Gulam Sharwar Ansari</p>
-<p>Vill : Amjhar Sharif</p>
+<p>S/o Gulam Sharwar Ansari, Aurangabad</p>
 
 <div class="section">
 <h3>Programme</h3>
@@ -119,9 +157,16 @@ Near Islahiya Madarsa, Daudnagar
 </div>
 
 <script>
-// Floating hearts
+
+/* Open Envelope */
+function openCard(){
+document.getElementById("envelopeScreen").style.display="none";
+document.getElementById("mainCard").style.display="block";
+}
+
+/* Floating Hearts */
 setInterval(function(){
-var heart = document.createElement("div");
+var heart=document.createElement("div");
 heart.className="heart";
 heart.innerHTML="💖";
 heart.style.left=Math.random()*100+"vw";
@@ -129,6 +174,7 @@ heart.style.fontSize=(Math.random()*15+15)+"px";
 document.body.appendChild(heart);
 setTimeout(function(){heart.remove();},6000);
 },700);
+
 </script>
 
 </body>
